@@ -1,9 +1,9 @@
 
 import 'dart:convert';
 
-List<GitHubUser> GitHubUserFromJson(String str) => List<GitHubUser>.from(json.decode(str).map((x) => GitHubUser.fromJson(x)));
+List<GitHubUser> gitHubUserFromJson(String str) => List<GitHubUser>.from(json.decode(str).map((x) => GitHubUser.fromJson(x)));
 
-String GitHubUserToJson(List<GitHubUser> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String gitHubUserToJson(List<GitHubUser> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 // To parse this JSON data, do
 //
