@@ -1,15 +1,15 @@
 
 import 'dart:convert';
 
-List<GitHubAccount> gitHubAccountFromJson(String str) => List<GitHubAccount>.from(json.decode(str).map((x) => GitHubAccount.fromJson(x)));
+List<GitHubUser> GitHubUserFromJson(String str) => List<GitHubUser>.from(json.decode(str).map((x) => GitHubUser.fromJson(x)));
 
-String gitHubAccountToJson(List<GitHubAccount> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String GitHubUserToJson(List<GitHubUser> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 // To parse this JSON data, do
 //
-//     final gitHubAccount = gitHubAccountFromJson(jsonString);
+//     final GitHubUser = GitHubUserFromJson(jsonString);
 
-class GitHubAccount {
+class GitHubUser {
   String? login;
   int? id;
   String? nodeId;
@@ -29,7 +29,7 @@ class GitHubAccount {
   String? type;
   bool? siteAdmin;
 
-  GitHubAccount(
+  GitHubUser(
       {this.login,
         this.id,
         this.nodeId,
@@ -49,7 +49,7 @@ class GitHubAccount {
         this.type,
         this.siteAdmin});
 
-  // GitHubAccount.fromJson(Map<String, dynamic> json) {
+  // GitHubUser.fromJson(Map<String, dynamic> json) {
   //   login = json['login'];
   //   id = json['id'];
   //   nodeId = json['node_id'];
@@ -70,7 +70,7 @@ class GitHubAccount {
   //   siteAdmin = json['site_admin'];
   // }
 
-  factory GitHubAccount.fromJson(Map<String, dynamic> json) => GitHubAccount(
+  factory GitHubUser.fromJson(Map<String, dynamic> json) => GitHubUser(
     login: json["login"],
     id: json["id"],
     nodeId: json["node_id"],
