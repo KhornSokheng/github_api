@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:github_api/models/repository.dart';
 import 'package:github_api/screens/repository/repository_card.dart';
+import 'package:github_api/screens/repository/user_detail_card.dart';
 
 import '../../api/github_api.dart';
 import '../../models/git_hub_user.dart';
@@ -23,6 +24,8 @@ class _RepositoryPageState extends State<RepositoryPage> {
 
   Widget build(BuildContext context) {
     api_instance.getRepository(widget.user.login!);
+    double width = MediaQuery. of(context). size. width ;
+    int crossAxisCount = (width<500) ? 1 : (width<800) ? 2 : 4;
 
     return Scaffold(
       appBar:AppBar(
@@ -44,27 +47,30 @@ class _RepositoryPageState extends State<RepositoryPage> {
 
           var repositories = snapshot.data;
           return SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  width: 300,
-                  height: 150,
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.red[200],
-                    borderRadius: BorderRadius.circular(16),
+            child: Center(
+              child: Column(
+                children: [
+                  UserDetailCard(user: widget.user),
+                  Container(
+                    width: width*0.8,
+                    height: 900,
+                    child: GridView.count(
+
+                      crossAxisCount: crossAxisCount,
+
+
+                      childAspectRatio: 4/3,
+                      padding: const EdgeInsets.all(4.0),
+                      mainAxisSpacing: 4.0,
+                      crossAxisSpacing: 4.0,
+                      children:
+                      // [Container(color: Colors.blueGrey,),Container(color: Colors.blue,)]
+                      repositories!.map((repository) => RepositoryCard(respository: repository,)).toList()
+                      ,
+                    ),
                   ),
-                  child: Text(widget.user.login!),
-                ),
-                Column(
-                  children:
-                  repositories!.map((repository) => Center(
-                      child: RepositoryCard(respository: repository,)
-                  )).toList()
-                  ,
-                ),
-              ],
+                ],
+              ),
             ),
           );
 

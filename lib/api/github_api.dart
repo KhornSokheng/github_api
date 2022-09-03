@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:github_api/models/git_hub_user.dart';
 import 'package:github_api/models/repository.dart';
 import 'package:http/http.dart' as http;
@@ -34,4 +36,18 @@ class GitHubApi {
       return List.empty();
     }
   }
+
+  Future<int> getNumRepository(String username) async{
+    var url = Uri.https('api.github.com', 'users/$username/repos');
+    var response = await http.get(url);
+    if(response.statusCode == 200){
+      print(json.decode(response.body).length);
+      return json.decode(response.body).length;
+
+    }else {
+      print('Request failed with status: ${response.statusCode}.');
+      return 0;
+    }
+  }
+
 }

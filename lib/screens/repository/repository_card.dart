@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:github_api/models/repository.dart';
 
@@ -10,32 +11,37 @@ class RepositoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 600,
-      height: 150,
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.green[200],
-        borderRadius: BorderRadius.circular(16),
+    return Card(
+      shadowColor: Colors.grey,
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.white70, width: 1),
+        borderRadius: BorderRadius.circular(4),
       ),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              respository.name!,
-              style: TextStyle(
-                color: Colors.blueAccent,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(15,15,0,10),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AutoSizeText(
+                respository.name!,
+                maxLines: 1,
+                style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Divider(color: Colors.black,),
-            SizedBox(
-              height: 10,
-            ),
-            Text(respository.htmlUrl!)
-          ]
+              AutoSizeText(
+                respository.htmlUrl!,
+                maxLines: 2,
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              )
+            ]
+        ),
       ),
     );
   }
