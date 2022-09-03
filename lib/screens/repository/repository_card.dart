@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:github_api/models/repository.dart';
 
 class RepositoryCard extends StatelessWidget {
-  // const RepositoryCard({Key? key}) : super(key: key);
 
   Repository respository;
   RepositoryCard({required this.respository});

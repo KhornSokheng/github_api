@@ -20,7 +20,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     double width = MediaQuery. of(context). size. width ;
-    double height = MediaQuery. of(context). size. height;
 
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +42,6 @@ class _HomeState extends State<Home> {
           var user_list = snapshot.data;
           return SingleChildScrollView(
             child: Container(
-              // color: Colors.blueGrey,
               margin: EdgeInsets.fromLTRB(width*0.05, 30, width*0.05, 30),
               child: Column(
                 children:

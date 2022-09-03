@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:github_api/api/github_api.dart';
 import 'package:github_api/models/git_hub_user.dart';
 import 'package:github_api/screens/repository/repository_page.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -48,7 +47,6 @@ class _UserDetailCardState extends State<UserDetailCard> {
 
       child: Container(
           height: 230,
-          // color: Colors.deepOrange,
           margin: EdgeInsets.symmetric(vertical: 5),
           width: width*0.8,
           child: Stack(
@@ -105,7 +103,6 @@ class _UserDetailCardState extends State<UserDetailCard> {
                   top: 45,
                   left: width>600 ? width*1/3 : 200,
                   child: Container(
-                    // color: Colors.amberAccent,
                     width: width>500 ? width*0.4 : width*0.3,
                     height: 150,
                     child: Column(
@@ -130,7 +127,6 @@ class _UserDetailCardState extends State<UserDetailCard> {
                           style: TextStyle(
                             color: Colors.deepOrange,
                             fontWeight: FontWeight.bold,
-                            // fontSize: 16
                           ),
                         ),
 
@@ -139,7 +135,6 @@ class _UserDetailCardState extends State<UserDetailCard> {
                           style: TextStyle(
                             color: Colors.deepOrange,
                             fontWeight: FontWeight.bold,
-                            // fontSize: 16
                           ),
                         ),
 
@@ -148,7 +143,6 @@ class _UserDetailCardState extends State<UserDetailCard> {
                           style: TextStyle(
                             color: Colors.deepOrange,
                             fontWeight: FontWeight.bold,
-                            // fontSize: 16
                           ),
                         ),
 
@@ -157,7 +151,6 @@ class _UserDetailCardState extends State<UserDetailCard> {
                           style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
-                            // fontSize: 16
                           ),
                         ),
 

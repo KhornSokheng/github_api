@@ -4,7 +4,6 @@ import 'package:github_api/screens/repository/repository_page.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class AccountCard extends StatelessWidget {
-  // const AccountCard({Key? key}) : super(key: key);
 
   GitHubUser user;
   AccountCard({required this.user});
@@ -13,12 +12,10 @@ class AccountCard extends StatelessWidget {
   Widget build(BuildContext context) {
 
     double width = MediaQuery. of(context). size. width ;
-    double height = MediaQuery. of(context). size. height;
 
     return InkWell(
       hoverColor: Colors.blue[500]!.withOpacity(0.5),
       onTap: () {},
-      // highlightColor: Colors.blueGrey,
 
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -31,18 +28,11 @@ class AccountCard extends StatelessWidget {
           // color: Colors.deepOrange,
           margin: EdgeInsets.symmetric(vertical: 5),
           width: width,
-          // padding: EdgeInsets.all(8),
-          // margin: EdgeInsets.all(8),
-          // decoration: BoxDecoration(
-          //   color: Colors.green[200],
-          //   borderRadius: BorderRadius.circular(16),
-          // ),
           child: Stack(
             children: [
               Positioned(
                 top: 20,
                 left: 15,
-                // right: width*0.1,
                 bottom: 15,
                 child: Material(
                   child: Container(
@@ -90,9 +80,7 @@ class AccountCard extends StatelessWidget {
               Positioned(
                 top: 45,
                 left: width>600 ? width*1/3 : 200,
-                // right: 60,
                 child: Container(
-                  // color: Colors.amberAccent,
                   width: width>500 ? width*0.5 : 150,
                   height: 150,
                   child: Column(
