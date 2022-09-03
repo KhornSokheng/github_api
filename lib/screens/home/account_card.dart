@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:github_api/models/git_hub_user.dart';
 import 'package:github_api/screens/repository/repository_page.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class AccountCard extends StatelessWidget {
   // const AccountCard({Key? key}) : super(key: key);
@@ -81,7 +81,43 @@ class AccountCard extends StatelessWidget {
                   ),
                 ),
               )
-            )
+            ),
+            Positioned(
+              top: 45,
+              left: width>600 ? width*1/3 : 200,
+              // right: 60,
+              child: Container(
+                // color: Colors.amberAccent,
+                width: width>500 ? width*0.5 : 150,
+                height: 150,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    AutoSizeText(
+                      user.login!,
+                      maxLines: 1,
+                      style: const TextStyle(
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+
+                      ),
+                    ),
+                    Divider(color: Colors.blueGrey,
+                      height: 40,
+                    ),
+                    AutoSizeText(user.htmlUrl!,
+                      maxLines: 2,
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          // fontSize: 16
+                      ),
+                    ),
+
+                  ],
+                ),
+            ))
           ],
         )
       ),
