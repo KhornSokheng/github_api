@@ -11,6 +11,10 @@ class AccountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double width = MediaQuery. of(context). size. width ;
+    double height = MediaQuery. of(context). size. height;
+
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {
 
@@ -18,52 +22,68 @@ class AccountCard extends StatelessWidget {
       })),
 
       child: Container(
-        height: 150,
-        width: 1250,
-        padding: EdgeInsets.all(8),
-        margin: EdgeInsets.all(8),
+        height: 230,
+        // color: Colors.deepOrange,
+        margin: EdgeInsets.symmetric(vertical: 5),
+        width: width,
+        // padding: EdgeInsets.all(8),
+        // margin: EdgeInsets.all(8),
         // decoration: BoxDecoration(
         //   color: Colors.green[200],
         //   borderRadius: BorderRadius.circular(16),
         // ),
-        child: Card(
-          shadowColor: Colors.orange,
-          elevation: 8,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.white70, width: 1),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AspectRatio(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 20,
+              left: 15,
+              // right: width*0.1,
+              bottom: 15,
+              child: Material(
+                child: Container(
 
-                aspectRatio: 4/3,
-                child: Ink.image(
-                  image: NetworkImage(user.avatarUrl!),
+                  height: 190,
+                  width: width,
+                  decoration: BoxDecoration(
 
-                  // colorFilter: widget.activity.reached ? ColorFilters.identity
-                  //     : ColorFilters.greyscale,
-                  // height: 500,
-                  // width: 500,
-                  // fit: BoxFit.cover,
-                  fit: BoxFit.fill,
-                  child: InkWell(
-                    hoverColor: Colors.grey[100]!.withOpacity(0.5),
-                    onTap: () {},
-                  ), // InkWell
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(0.2),
+                    boxShadow: [ BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        offset: const Offset(-10, 10),
+                        blurRadius: 20,
+                        spreadRadius: 4
+                    )],
+
+                  ),
+
                 ),
-              ),
-              Text(user.login!),
 
-              Text(user.htmlUrl!)
-
-            ],
-          ),
-
-
-        ),
+            )),
+            Positioned(
+              top: 0,
+              left: width*0.05,
+              child: Card(
+                elevation: 10,
+                shadowColor: Colors.grey.withOpacity(0.4),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)
+                ),
+                child: Container(
+                  height: 200,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(user.avatarUrl!)
+                    )
+                  ),
+                ),
+              )
+            )
+          ],
+        )
       ),
     );
   }
